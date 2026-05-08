@@ -48,4 +48,4 @@ app.delete('/api/empleados/:id', async (req, res) => {
   } catch (err) { res.status(500).json({ error: err.message }); }
 });
 
-app.listen(PORT, () => console.log('✅ Servidor en http://localhost:3001'));
+app.listen(PORT, () => console.log('✅ Servidor en http://localhost:3001SSssssss'));
