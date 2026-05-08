@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from 'react';
-
+// URL base de la API REST - Backend (puerto 3001)
 const API_URL = 'http://localhost:3001/api/empleados';
-
+/**
+ * Componente principal de la aplicación
+ * Gestiona el CRUD de empleados mediante React y Fetch API
+ */
 function App() {
+    // Estado para almacenar la lista de empleados traída de la BD
   const [empleados, setEmpleados] = useState([]);
+  // Estado controlado para el formulario de registro/edición
   const [form, setForm] = useState({
     nombre: '',
     numero_identificacion: '',
@@ -11,11 +16,16 @@ function App() {
     correo_electronico: '',
     dependencia: ''
   });
+   // ID del empleado en modo edición (null = modo creación)
   const [editandoId, setEditandoId] = useState(null);
-
+  // useEffect: Se ejecuta al cargar el componente para traer datos iniciales
   useEffect(() => {
     fetchEmpleados();
   }, []);
+   /**
+   * Función asíncrona para obtener empleados desde el backend
+   * Método: GET
+   */
 
   const fetchEmpleados = async () => {
     try {
@@ -26,11 +36,16 @@ function App() {
       console.error('Error:', error);
     }
   };
-
+ /**
+   * Maneja los cambios en los inputs del formulario
+   * @param {Event} e - Evento de cambio del input
+   */
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    setForm({ ...form,// Mantiene los valores anteriores
+     [e.target.name]: e.target.value // Actualiza solo el campo modificado
+    });
   };
-
+// ... (resto de tus funciones: handleSubmit, handleEdit, handleDelete, return con JSX)
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
