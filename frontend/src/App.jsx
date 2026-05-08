@@ -35,7 +35,7 @@ function App() {
     e.preventDefault();
     try {
       const method = editandoId ? 'PUT' : 'POST';
-      const url = editandoId ? '${API_URL}/${editandoId}' : API_URL;
+      const url = editandoId ? (API_URL + '/' + editandoId) : API_URL;
       const res = await fetch(url, {
         method,
         headers: { 'Content-Type': 'application/json' },
